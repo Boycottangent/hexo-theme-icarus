@@ -11,7 +11,12 @@
         <% if (post.layout != 'page') { %>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="<%= date_xml(post.date) %>"><%= date(post.date) %></time>
+                <% if (post.top) { %>
+                <i class="fas fa-chevron-circle-up" style="color:#ff3860"></i>
+                <span class="level-item" style="color:#ff3860">&nbsp;TOP</span>
+                <% } %>
+                <time class="level-item has-text-grey"
+                    datetime="<%= date_xml(post.date) %>"><%= date(post.date) %></time>
                 <% if (post.categories && post.categories.length) { %>
                 <div class="level-item">
                 <%- list_categories(post.categories, {
@@ -71,11 +76,16 @@
             </div>
         </div>
         <% } %>
-        <% if (!index && has_config('share.type')) { %>
-        <%- _partial('share/' + get_config('share.type')) %>
-        <% } %>
     </div>
 </div>
+        <% if (!index && has_config('share.type')) { %>
+        <div class="card">
+    <div class="card-content">
+    <h3 class="menu-label has-text-centered">Share this post if you like</h3>
+        <%- partial('share/' + get_config('share.type')) %>
+    </div>
+</div>
+<% } %>
 
 <% const services = has_config('donate') ? get_config('donate') : []; %>
 <% if (!index && services.length > 0) { %>

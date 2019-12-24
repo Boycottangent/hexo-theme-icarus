@@ -2,7 +2,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            <%= __('widget.links') %>
+            <%= get_config_from_obj(widget, 'label') %>
         </h3>
         <ul class="menu-list">
         <% for (let i in links) { %>
