@@ -1,0 +1,18 @@
+# Rename file to '_config.post.yml' to make it works
+navbar:
+  menu:
+    首页: /index.html
+    归档: /archives
+    关于我: /about
+
+widgets:
+    # Table of contents widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: left
+        type: toc
+    # Archives widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: left
+        type: archives

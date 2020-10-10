@@ -1,0 +1,67 @@
+# Rename file to '_config.page.yml' to make it works
+comment: false
+sidebar:
+    # Right sidebar configurations
+    right:
+        # Whether the sidebar sticks to the top when page scrolls
+        sticky: true
+
+widgets:
+    # Profile widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: right
+        type: profile
+        # Author name
+        author: 杯葛
+        # Author title
+        author_title: haikuzu
+        # Author's current location
+        location: Beijing, China
+        # URL or path to the avatar image
+        avatar: /img/avatar.jpg
+        # Whether show the rounded avatar image
+        avatar_rounded: true
+        # Email address for the Gravatar
+        gravatar: 
+        # URL or path for the follow button
+        follow_link: 'https://t.me/joinchat/AAAAAE6BmYMIzVmVkE-eOQ'
+        # Links to be shown on the bottom of the profile widget
+        social_links:
+            Twitter:
+                icon: fab fa-twitter
+                url: 'https://twitter.com/boycottangent'
+            Weibo:
+                icon: fab fa-weibo
+                url: 'https://weibo.com/u/5302378219'
+            Last.fm:
+                icon: fab fa-lastfm
+                url: 'https://www.last.fm/zh/user/Boycottangent'
+            RSS:
+                icon: fas fa-rss
+                url: /atom.xml
+    # Table of contents widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: right
+        type: toc
+    # Recent posts widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: right
+        type: recent_posts
+    # Categories widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: right
+        type: categories
+    # Archives widget configurations
+    # -
+        # Where should the widget be placed, left sidebar or right sidebar
+        # position: left
+        # type: archives
+    # Tags widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: right
+        type: tags
