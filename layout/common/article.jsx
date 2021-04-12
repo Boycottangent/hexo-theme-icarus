@@ -42,6 +42,8 @@ module.exports = class extends Component {
                 <article class={`card-content article${'direction' in page ? ' ' + page.direction : ''}`} role="article">
                     {page.layout !== 'page' ? <div class="article-meta is-size-7 is-uppercase level is-mobile">
                         <div class="level-left">
+                            {/* Pin Top Remark */}
+                            {page.sticky && page.sticky > 0 ? <span class="level-item"><i class="fas fa-thumbtack"></i> </span> : null }
                             {/* Creation Date */}
                             {page.date && <span class="level-item" dangerouslySetInnerHTML={{
                                 __html: _p('article.created_at', `<time dateTime="${date_xml(page.date)}" title="${date_xml(page.date)}">${date(page.date)}</time>`)
