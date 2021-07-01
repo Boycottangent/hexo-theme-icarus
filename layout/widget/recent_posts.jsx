@@ -24,29 +24,29 @@ const ArticleMedia = require('../common/article_media');
  *     ]} />
  */
 class RecentPosts extends Component {
-  render() {
-    const { title, posts } = this.props;
+    render() {
+        const { title, posts } = this.props;
 
-    return (
-      <div class="card widget" data-type="recent-posts">
-        <div class="card-content">
-          <h3 class="menu-label">{title}</h3>
-          {posts.map((post) => {
-            return (
-              <ArticleMedia
-                thumbnail={post.thumbnail}
-                url={post.url}
-                title={post.title}
-                date={post.date}
-                dateXml={post.dateXml}
-                categories={post.categories}
-              />
-            );
-          })}
-        </div>
-      </div>
-    );
-  }
+        return (
+            <div class="card widget" data-type="recent-posts">
+                <div class="card-content">
+                    <h3 class="menu-label">{title}</h3>
+                    {posts.map((post) => {
+                        return (
+                            <ArticleMedia
+                                thumbnail={post.thumbnail}
+                                url={post.url}
+                                title={post.title}
+                                date={post.date}
+                                dateXml={post.dateXml}
+                                categories={post.categories}
+                            />
+                        );
+                    })}
+                </div>
+            </div>
+        );
+    }
 }
 
 /**
@@ -67,30 +67,30 @@ class RecentPosts extends Component {
  *     }}
  *     limit={5} />
  */
-RecentPosts.Cacheable = cacheComponent(RecentPosts, 'widget.recentposts', (props) => {
-  const { site, helper, limit = 5 } = props;
-  const { url_for, __, date_xml, date } = helper;
-  if (!site.posts.length) {
-    return null;
-  }
-  const posts = site.posts
-    .sort('date', -1)
-    .limit(limit)
-    .map((post) => ({
-      url: url_for(post.link || post.path),
-      title: post.title,
-      date: date(post.date),
-      dateXml: date_xml(post.date),
-      thumbnail: post.thumbnail ? url_for(post.thumbnail) : null,
-      categories: post.categories.map((category) => ({
-        name: category.name,
-        url: url_for(category.path),
-      })),
-    }));
-  return {
-    posts,
-    title: __('widget.recents'),
-  };
+RecentPosts.Cacheable = cacheComponent(RecentPosts, 'widget.recentposts', props => {
+    const { site, helper, limit = 5 } = props;
+    const { url_for, __, date_xml, date } = helper;
+    if (!site.posts.length) {
+        return null;
+    }
+    const posts = site.posts
+        .sort('date', -1)
+        .limit(limit)
+        .map(post) => ({
+            url: url_for(post.link || post.path),
+            title: post.title,
+            date: date(post.date),
+            dateXml: date_xml(post.date),
+            thumbnail: post.thumbnail ? url_for(post.thumbnail) : null,
+            categories: post.categories.map(category) => ({
+                name: category.name,
+                url: url_for(category.path),
+            }),
+        });
+    return {
+        posts,
+        title: __('widget.recents'),
+    };
 });
 
 module.exports = RecentPosts;

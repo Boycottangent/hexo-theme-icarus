@@ -20,36 +20,36 @@ const { Component } = require('inferno');
  *     ]} />
  */
 module.exports = class extends Component {
-  render() {
-    const { thumbnail, url, title, date, dateXml, categories } = this.props;
+    render() {
+        const { thumbnail, url, title, date, dateXml, categories } = this.props;
 
-    const categoryTags = [];
-    categories.forEach((category, i) => {
-      categoryTags.push(<a href={category.url}>{category.name}</a>);
-      if (i < categories.length - 1) {
-        categoryTags.push(' / ');
-      }
-    });
+        const categoryTags = [];
+        categories.forEach((category, i) => {
+            categoryTags.push(<a href={category.url}>{category.name}</a>);
+            if (i < categories.length - 1) {
+                categoryTags.push(' / ');
+            }
+        });
 
-    return (
-      <article class="media">
-        <div class="media-content">
-          <p class="date">
-            <time dateTime={dateXml}>{date}</time>
-          </p>
-          <p class="title">
-            <a href={url}>{title}</a>
-          </p>
-          {categoryTags.length ? <p class="categories">{categoryTags}</p> : null}
-        </div>
-        {thumbnail ? (
-          <figure class="media-left">
-            <a class="image" href={url}>
-              <img src={thumbnail} alt={title} />
-            </a>
-          </figure>
-        ) : null}
-      </article>
-    );
-  }
+        return (
+            <article class="media">
+                <div class="media-content">
+                    <p class="date">
+                        <time dateTime={dateXml}>{date}</time>
+                    </p>
+                    <p class="title">
+                        <a href={url}>{title}</a>
+                    </p>
+                    {categoryTags.length ? <p class="categories">{categoryTags}</p> : null}
+                </div>
+                {thumbnail ? (
+                    <figure class="media-left">
+                        <a class="image" href={url}>
+                            <img src={thumbnail} alt={title} />
+                        </a>
+                    </figure>
+                ) : null}
+            </article>
+        );
+    }
 };
